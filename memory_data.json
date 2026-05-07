@@ -1,0 +1,38 @@
+[
+    {
+        "id": "2bb06aef-22b9-4c96-b824-aa00d0978f0e",
+        "type": "\"note\"",
+        "content": "\"Learn AI\"",
+        "tags": [
+            "string"
+        ],
+        "timestamp": "2026-05-06T18:34:29.341681"
+    },
+    {
+        "id": "ce0cfdf1-228c-490d-bc0c-06cf4fc9611f",
+        "type": "\"note\"",
+        "content": "\"Learn AI\"",
+        "tags": [
+            "string"
+        ],
+        "timestamp": "2026-05-06T18:34:45.674326"
+    },
+    {
+        "id": "b8619bcf-69ea-4478-bcef-3c6ab7a1805a",
+        "type": "note",
+        "content": "Learn AI",
+        "tags": [
+            "string"
+        ],
+        "timestamp": "2026-05-06T18:36:37.292890"
+    },
+    {
+        "id": "bfa425ad-5d3c-47e3-b2b4-b984070a40fd",
+        "type": "preference",
+        "content": "User likes machine learning",
+        "tags": [
+            "string"
+        ],
+        "timestamp": "2026-05-07T12:35:06.962978"
+    }
+]
