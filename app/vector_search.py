@@ -48,7 +48,7 @@ class VectorSearchEngine:
             print(f"Similarity: {similarity}")
 
             # Similarity Threshold
-            if similarity > 0.30:
+            if similarity > 0.45:
 
                 results.append({
                     "text": memory_text,
