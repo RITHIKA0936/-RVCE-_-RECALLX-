@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Memory Search</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 500px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        input {
+            width: 95%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid gray;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: blue;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+
+        #output {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f7f7f7;
+            border-radius: 6px;
+            min-height: 100px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>AI Memory Search</h1>
+
+        <input
+            type="text"
+            id="queryInput"
+            placeholder="Enter your query here"
+        >
+
+        <button onclick="searchMemory()">
+            Search Memory
+        </button>
+
+        <div id="output">
+            Results will appear here...
+        </div>
+
+    </div>
+
+    <script>
+
+        async function searchMemory() {
+
+            const query =
+                document.getElementById("queryInput").value;
+
+            const output =
+                document.getElementById("output");
+
+            output.innerHTML = "Searching...";
+
+            try {
+
+                const response = await fetch(
+                    "http://127.0.0.1:8000/search",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify({
+                            text: query
+                        })
+                    }
+                );
+
+                const data = await response.json();
+
+                output.innerHTML = `
+                    <h3>AI Response</h3>
+                    <p>${data.response}</p>
+
+                    <h3>Top Match</h3>
+                    <p>${data.results[0].text}</p>
+
+                    <h3>Similarity Score</h3>
+                    <p>${data.results[0].similarity}</p>
+                `;
+
+            } catch(error) {
+
+                output.innerHTML =
+                    "Relevant data not found in memory.";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>
